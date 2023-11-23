@@ -1,101 +1,56 @@
-const EDITORIALES = [
-  {
-    CODIGO: "E01",
-    NOMBRE_EDITORIAL: "Editorial 1 ",
-    PAIS: "España",
-  },
-  {
-    CODIGO: "E02",
-    NOMBRE_EDITORIAL: "Editorial 2 ",
-    PAIS: "Estados unidos",
-  },
-  {
-    CODIGO: "E03",
-    NOMBRE_EDITORIAL: "Editorial 3 ",
-    PAIS: "Italia",
-  },
-  {
-    CODIGO: "E04",
-    NOMBRE_EDITORIAL: "Editorial 4 ",
-    PAIS: "Francia",
-  },
-];
+"use client";
 
-const LIBROS = [
-  {
-    CODIGO: "L0001",
-    NOMBRE: "Don Quijote de La Mancha I",
-    CODIGO_EDITORIAL: "E01",
-    AUTOR: "Miguel de Cervantes",
-    GÉNERO: "Caballeresco",
-    PAÍS_DEL_AUTOR: "España",
-    PRECIO: "750",
-  },
-  {
-    CODIGO: "L0002",
-    NOMBRE: "Don Quijote de La Mancha II",
-    CODIGO_EDITORIAL: "E01",
-    AUTOR: "Miguel de Cervantes",
-    GÉNERO: "Caballeresco",
-    PAÍS_DEL_AUTOR: "España",
-    PRECIO: "125",
-  },
-  {
-    CODIGO: "L0003",
-    NOMBRE: "Historias de Nueva Orleans",
-    CODIGO_EDITORIAL: "E02",
-    AUTOR: "WilliamFaulkner",
-    GÉNERO: "Novela",
-    PAÍS_DEL_AUTOR: "Estados Unidos",
-    PRECIO: "675",
-  },
-  {
-    CODIGO: "L0004",
-    NOMBRE: "El príncipe",
-    CODIGO_EDITORIAL: "E03",
-    AUTOR: "Maquiavelo",
-    GÉNERO: "Político",
-    PAÍS_DEL_AUTOR: "Italia",
-    PRECIO: "125",
-  },
-  {
-    CODIGO: "L0005",
-    NOMBRE: "Diplomacia",
-    CODIGO_EDITORIAL: "E04",
-    AUTOR: "Henry Kissinger",
-    GÉNERO: "Político",
-    PAÍS_DEL_AUTOR: "Alemania",
-    PRECIO: "750",
-  },
-  {
-    CODIGO: "L0006",
-    NOMBRE: "Los Windsor",
-    CODIGO_EDITORIAL: "E04",
-    AUTOR: "Kitty Kelley",
-    GÉNERO: "Biografías",
-    PAÍS_DEL_AUTOR: "Gran Bretaña",
-    PRECIO: "130",
-  },
-  {
-    CODIGO: "L0007",
-    NOMBRE: "El Último Emperador",
-    CODIGO_EDITORIAL: "E03",
-    AUTOR: "Pu-Yi",
-    GÉNERO: "Autobiografías",
-    PAÍS_DEL_AUTOR: "China",
-    PRECIO: "995",
-  },
-  {
-    CODIGO: "L0008",
-    NOMBRE: "Don Quijote de La Mancha I ",
-    CODIGO_EDITORIAL: "E01",
-    AUTOR: "Miguel de Cervantes",
-    GÉNERO: "Caballeresco",
-    PAÍS_DEL_AUTOR: "España",
-    PRECIO: "750",
-  },
-];
+import { EDITORIALES, LIBROS } from "@/public/data";
+import { useState } from "react";
+import Row from "./Row";
 
 export default function Home() {
-  return <div>Hi</div>;
+  const [editoriales, setEditoriales] = useState(EDITORIALES);
+  const [libros, setLibros] = useState(LIBROS);
+
+  return (
+    <div className=" mx-6 mb-3 border-x-2 border-gray-500 text-lg mt-10 rounded">
+      <div className="flex divide-x-2 divide-gray-500 border-y-2 border-gray-500 font-semibold overflow-auto">
+        <div className="flex items-center">
+          <div className=" py-2.5 pl-4 w-28">CÓDIGO</div>
+        </div>
+        <div className="flex items-center">
+          <div className=" py-2.5 pl-4 w-40">NOMBRE</div>
+        </div>
+        <div className="flex items-center">
+          <div className=" py-2.5 pl-4 w-52">CODIGO EDITORIAL</div>
+        </div>
+
+        <div className="flex items-center">
+          <div className=" pl-1.5 w-44">AUTOR</div>
+        </div>
+
+        <div className="flex items-center">
+          <div className=" py-2.5 pl-4 w-44">GÉNERO</div>
+        </div>
+        <div className="flex items-center">
+          <div className=" pl-1.5 w-44">PAÍS DEL AUTOR</div>
+        </div>
+        <div className="flex items-center">
+          <div className=" pl-1.5 w-24">PRECIO</div>
+        </div>
+        <div className="flex items-center">
+          <div className=" py-2.5 pl-4">Opciones</div>
+        </div>
+      </div>
+      {libros.map((book, index) => (
+        <Row key={index} book={book} libros={libros} setLibros={setLibros} />
+      ))}
+      {/* {clients.map((value, index) => {
+            return (
+              <ClientRow
+                key={index}
+                clientValue={value}
+                setClients={setClients}
+                clients={clients}
+              />
+            );
+          })} */}
+    </div>
+  );
 }
