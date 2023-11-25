@@ -33,12 +33,6 @@ textarea:focus {
   outline: none;
 }
 
-/* body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-} */
+body {
+  background: rgb(243, 237, 237);
+}
